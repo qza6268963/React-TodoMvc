@@ -1,10 +1,21 @@
 import React from 'react'
 import { TodoItem } from './TodoItem'
-export const TodoItemList = ({ list }) => {
+import { useSelector,useDispatch } from "react-redux";
+import { toggleAllTodo } from '../redux/Todo/actions'
+
+export const TodoItemList = () => {
+  const list = useSelector((state) => state.todoReducer)
+  const dispatch = useDispatch()
+  let count = 0
+  list.forEach(v=>{ if(v.status) count++  })
+
+  const toggleAll = (event) =>{
+    dispatch(toggleAllTodo(event.target.checked))
+  }
 
   return (
     <section className='main'>
-      <input className='toggle-all' type='checkbox'></input>
+      <input id="toggle-all" className='toggle-all' checked={count === list.length} onChange={toggleAll} type='checkbox' />
       <label htmlFor='toggle-all'></label>
       <ul className='todo-list'>
         {

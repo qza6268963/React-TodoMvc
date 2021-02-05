@@ -4,6 +4,7 @@ export const iniTodo = () => dispatch =>{
     todo:[]
   })
 }
+
 export const finishTodo =(todo) => dispatch => {
   dispatch({
     type:'FINISH_TODO',
@@ -28,4 +29,26 @@ export const deleteTodo =(id) => dispatch => {
     id
   })
 }
+
+export const updateStatusTodo =(id) => dispatch => {
+  dispatch({
+    type:'UPDATE_STATUS_TODO',
+    id
+  })
+}
+
+export const clearCompletedTodo =() => dispatch => {
+  dispatch({
+    type:'CLEAR_TODO'
+  })
+}
+
+export const toggleAllTodo =(status) => dispatch => {
+  dispatch({
+    type:'TOGGLE_ALL_TODO',
+    status
+  })
+}
+
+
 
