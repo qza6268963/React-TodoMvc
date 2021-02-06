@@ -11,17 +11,17 @@ export const todoReducer = (state = [], action) => {
       arr.splice(state.findIndex((item) => item.id === action.id), 1)
       return [...arr]
     }
-    case 'UPDATE_STATUS_TODO': {
+    case 'UPDATE_COMPLETED_TODO': {
       const arr = [...state]
-      arr[state.findIndex((item) => item.id === action.id)].status = !arr[state.findIndex((item) => item.id === action.id)].status
+      arr[state.findIndex((item) => item.id === action.id)].completed = !arr[state.findIndex((item) => item.id === action.id)].completed
       return [...arr]
     }
     case 'CLEAR_TODO':{
-      return state.filter(v => !v.status)
+      return state.filter(v => !v.completed)
     }
     case 'TOGGLE_ALL_TODO': {
       return state.map(v => {
-          v.status = action.status
+          v.completed = action.completed
           return v
         })
     }

@@ -7,7 +7,7 @@ export const TodoItemList = () => {
   const list = useSelector((state) => state.todoReducer)
   const dispatch = useDispatch()
   let count = 0
-  list.forEach(v=>{ if(v.status) count++  })
+  list.forEach(v=>{ if(v.completed) count++  })
 
   const toggleAll = (event) =>{
     dispatch(toggleAllTodo(event.target.checked))
@@ -22,7 +22,7 @@ export const TodoItemList = () => {
           list.map((v) =>
             <TodoItem
               key={v.id}
-              status={v.status}
+              completed={v.completed}
               name={v.name} id={v.id}
             />,
           )

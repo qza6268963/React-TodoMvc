@@ -2,15 +2,15 @@ import React, { useState } from 'react'
 import classNames from 'classnames'
 import { useDispatch } from 'react-redux';
 import { deleteTodo } from '../redux/Todo/actions';
-import {updateStatusTodo} from '../redux/Todo/actions'
+import {updateCompletedTodo} from '../redux/Todo/actions'
 
 
-export const TodoItem = ({ id, status, name }) => {
+export const TodoItem = ({ id, completed, name }) => {
   const [editText, setEditText] = useState(name)
   const [editing, setEditing] = useState(false)
   const dispatch = useDispatch()
   const handleCheckTodo = () => {
-    dispatch(updateStatusTodo(id))
+    dispatch(updateCompletedTodo(id))
   }
   const handleEdit = () => {
     setEditing(true)
@@ -34,11 +34,11 @@ export const TodoItem = ({ id, status, name }) => {
   }
   return (
     <li className={classNames({
-      completed: status,
+      completed: completed,
       editing: editing,
     })}>
       <div className='view'>
-        <input onChange={handleCheckTodo} checked={status} className='toggle' type='checkbox'/>
+        <input onChange={handleCheckTodo} checked={completed} className='toggle' type='checkbox'/>
         <label onDoubleClick={handleEdit}>
           {editText}
         </label>

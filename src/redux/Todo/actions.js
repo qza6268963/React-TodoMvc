@@ -17,7 +17,7 @@ export const addTodo =(todoName) => dispatch => {
     type:'ADD_TODO',
     todo:{
       id: Math.random(),
-      status:false,
+      completed:false,
       name:todoName
     }
   })
@@ -30,9 +30,9 @@ export const deleteTodo =(id) => dispatch => {
   })
 }
 
-export const updateStatusTodo =(id) => dispatch => {
+export const updateCompletedTodo =(id) => dispatch => {
   dispatch({
-    type:'UPDATE_STATUS_TODO',
+    type:'UPDATE_COMPLETED_TODO',
     id
   })
 }
@@ -43,10 +43,10 @@ export const clearCompletedTodo =() => dispatch => {
   })
 }
 
-export const toggleAllTodo =(status) => dispatch => {
+export const toggleAllTodo =(completed) => dispatch => {
   dispatch({
     type:'TOGGLE_ALL_TODO',
-    status
+    completed
   })
 }
 

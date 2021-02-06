@@ -1,15 +1,16 @@
 import React from 'react'
 import { useSelector,useDispatch } from 'react-redux';
 import { clearCompletedTodo } from '../redux/Todo/actions'
+import { NavLink  } from "react-router-dom"
 
 export const TodoFooter = () => {
   const dispatch = useDispatch()
   const list = useSelector((state) => state.todoReducer)
   let unCompleted = 0
   let completed = 0
-  list.forEach(v => { 
-    if(!v.status) unCompleted++
-    if(v.status) completed++
+  list.forEach(v => {
+    if(!v.completed) unCompleted++
+    if(v.completed) completed++
 })
   const onClearCompleted = () => {
     dispatch(clearCompletedTodo())
@@ -28,14 +29,12 @@ export const TodoFooter = () => {
             <span> left</span>
           </span>
           <ul className="filters">
-            <li><a href="#/" className="selected">All</a>
+            <li><NavLink to="/todo/all" activeClassName="selected">All</NavLink>
             </li>
-            <span> </span>
-            <li><a href="#/active" className="">Active</a>
+            <li><NavLink to="/todo/active" activeClassName="selected">Active</NavLink>
             </li>
-            <span> </span>
             <li>
-              <a href="#/completed" className="">Completed</a>
+              <NavLink to="/todo/completed" activeClassName="selected">Completed</NavLink>
             </li>
           </ul>
           {
