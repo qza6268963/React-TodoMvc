@@ -2,12 +2,11 @@ import React from 'react'
 import { TodoHeader } from "./components/TodoHeader";
 import { TodoItemList } from "./components/TodoItemList";
 import { TodoFooter } from "./components/TodoFooter";
-import PageNoFound from "./components/PageNoFound";
 import {
   BrowserRouter as Router,
   Redirect,
   Route ,
-  Switch
+  Switch,
 } from "react-router-dom"
 
 function App() {
@@ -26,9 +25,6 @@ function App() {
               <TodoItemList/>
             </Route>
             <Redirect from="/todo/*" to="/todo/all"/>)
-            <Route path="*">
-              <PageNoFound/>
-            </Route>
           </Switch>
           <TodoFooter/>
       </div>

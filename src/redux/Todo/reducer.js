@@ -1,4 +1,16 @@
-export const todoReducer = (state = [], action) => {
+const initState = [
+  {
+    id: Math.random(),
+    completed:false,
+    name:'测试1'
+  },
+  {
+    id: Math.random(),
+    completed:true,
+    name:'测试2'
+  }
+]
+export const todoReducer = (state = initState, action) => {
   switch (action.type) {
     case 'FINISH_TODO': {
       return action.todo

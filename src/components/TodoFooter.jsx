@@ -11,7 +11,7 @@ export const TodoFooter = () => {
   list.forEach(v => {
     if(!v.completed) unCompleted++
     if(v.completed) completed++
-})
+  })
   const onClearCompleted = () => {
     dispatch(clearCompletedTodo())
   }

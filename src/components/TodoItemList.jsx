@@ -2,13 +2,30 @@ import React from 'react'
 import { TodoItem } from './TodoItem'
 import { useSelector,useDispatch } from "react-redux";
 import { toggleAllTodo } from '../redux/Todo/actions'
+import { useLocation } from 'react-router-dom'
 
 export const TodoItemList = () => {
-  const list = useSelector((state) => state.todoReducer)
+  const location = useLocation()
+  let status = ''
+  switch(location.pathname) {
+    case '/todo/completed':
+      status = 'completed'
+    break
+    case '/todo/active':
+      status = 'active'
+    break
+    default:
+      status = ''
+  }
+  const todoReducer = useSelector((state) => state.todoReducer)
   const dispatch = useDispatch()
   let count = 0
-  list.forEach(v=>{ if(v.completed) count++  })
-
+  todoReducer.forEach(v=>{ if(v.completed) count++  })
+  const list = todoReducer.filter(v => {
+    if(status === 'completed') {return v.completed}
+    else if(status === 'active') {return !v.completed}
+    else return v
+  })
   const toggleAll = (event) =>{
     dispatch(toggleAllTodo(event.target.checked))
   }
