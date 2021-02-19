@@ -2,12 +2,12 @@ const initState = [
   {
     id: Math.random(),
     completed:false,
-    name:'测试1'
+    name:'testData1'
   },
   {
     id: Math.random(),
     completed:true,
-    name:'测试2'
+    name:'testData2'
   }
 ]
 export const todoReducer = (state = initState, action) => {

@@ -15,7 +15,7 @@ function App() {
       <div className='todoapp'>
           <TodoHeader/>
           <Switch>
-            (<Route path="/todo/all">
+            <Route path="/todo/all">
               <TodoItemList/>
             </Route>
             <Route path="/todo/active">
@@ -24,7 +24,7 @@ function App() {
             <Route path="/todo/completed">
               <TodoItemList/>
             </Route>
-            <Redirect from="/todo/*" to="/todo/all"/>)
+            <Redirect from="/todo/*" to="/todo/all"/>
           </Switch>
           <TodoFooter/>
       </div>
